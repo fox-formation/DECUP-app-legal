@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supprimer mon compte — DEC'UP | Fox Formations</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #F3F2EC;
+      color: #1E293B;
+      line-height: 1.6;
+    }
+    a { color: #3F8757; text-decoration: underline; }
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Header */
+    .header { margin-bottom: 4px; }
+    .header-label { font-size: 13px; font-weight: 600; color: #6B7280; letter-spacing: 0.5px; text-transform: uppercase; }
+    .header-title { font-size: 30px; font-weight: 800; color: #0F172A; line-height: 1.2; margin-top: 4px; }
+
+    /* Cards */
+    .card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(15,23,42,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card-red   { border-left: 4px solid #EF4444; }
+    .card-green { border-left: 4px solid #3F8757; }
+
+    /* Section titles */
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title .icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .icon-red   { background: #FEF2F2; }
+    .icon-green { background: #DCEEDB; }
+
+    p.para { font-size: 14px; line-height: 1.65; color: #1E293B; }
+
+    /* Steps */
+    .steps { display: flex; flex-direction: column; gap: 10px; }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 14px;
+      background: #F8FAFC;
+      border-radius: 10px;
+    }
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #DCEEDB;
+      color: #1F4E32;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-text { font-size: 14px; line-height: 1.55; color: #1E293B; }
+    .step-text strong { color: #0F172A; }
+
+    /* Info boxes */
+    .info-box {
+      border-radius: 10px;
+      padding: 13px 14px;
+      border-left: 3px solid;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .info-box.blue    { background: #EFF6FF; border-color: #BFDBFE; color: #1E40AF; }
+    .info-box.green   { background: #DCEEDB; border-color: #B8DDB6; color: #1F4E32; }
+    .info-box.warning { background: #FEF9EC; border-color: #F5D17A; color: #92610A; }
+    .info-box.red     { background: #FEF2F2; border-color: #FECACA; color: #991B1B; }
+
+    /* Table */
+    .data-table { width: 100%; border-collapse: collapse; border: 1px solid #E5E7EB; font-size: 13px; }
+    .data-table tr:nth-child(even) { background: #FAFAFA; }
+    .data-table tr:nth-child(odd)  { background: #FFFFFF; }
+    .data-table th { padding: 10px 14px; background: #F1F5F9; font-weight: 700; color: #0F172A; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; border-bottom: 1px solid #E5E7EB; }
+    .data-table td { padding: 10px 14px; border-bottom: 1px solid #E5E7EB; vertical-align: top; line-height: 1.5; color: #1E293B; }
+    .data-table td:first-child { font-weight: 600; color: #0F172A; width: 40%; }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      background: #DCEEDB;
+      color: #1F4E32;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* Footer */
+    .footer {
+      font-size: 12px;
+      color: #9CA3AF;
+      text-align: center;
+      padding-top: 8px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-label">DEC'UP — Fox Formations</div>
+    <div class="header-title">Supprimer mon compte</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="card card-red">
+    <div class="card-title">
+      <div class="icon icon-red">🗑️</div>
+      Demande de suppression de compte
+    </div>
+    <p class="para">
+      Vous pouvez demander la suppression complète de votre compte DEC'UP et de toutes les
+      données personnelles associées à tout moment, <strong>sans avoir à fournir de justification</strong>.
+      La suppression est définitive et irréversible.
+    </p>
+    <div class="info-box warning">
+      ⚠️ La suppression de votre compte entraîne la perte définitive de toute votre progression,
+      vos XP, vos badges et votre historique de révision. Cette action ne peut pas être annulée.
+    </div>
+  </div>
+
+  <!-- MÉTHODE 1 — VIA L'APP -->
+  <div class="card card-green">
+    <div class="card-title">
+      <div class="icon icon-green">📱</div>
+      Méthode 1 — Directement dans l'application <span class="badge">Recommandé</span>
+    </div>
+    <p class="para">C'est la méthode la plus rapide. Suivez ces étapes depuis votre téléphone :</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">Ouvrez l'application <strong>DEC'UP</strong> sur votre téléphone</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">Appuyez sur <strong>Mon compte</strong> dans le menu de navigation</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">Faites défiler jusqu'en bas et appuyez sur <strong>"Supprimer mon compte"</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">Confirmez votre choix en saisissant votre adresse e-mail</div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-text">Votre compte est supprimé <strong>immédiatement</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÉTHODE 2 — PAR EMAIL -->
+  <div class="card">
+    <div class="card-title">
+      <div class="icon icon-green">✉️</div>
+      Méthode 2 — Par e-mail
+    </div>
+    <p class="para">
+      Si vous n'avez plus accès à l'application, envoyez un e-mail à notre équipe :
+    </p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">Envoyez un e-mail à <strong>admin@fox-formation.com</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">Objet : <strong>"Suppression de compte DEC'UP"</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">Indiquez l'<strong>adresse e-mail associée à votre compte</strong> dans le corps du message</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">Nous traitons votre demande dans un délai de <strong>30 jours maximum</strong></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CE QUI EST SUPPRIMÉ -->
+  <div class="card">
+    <div class="card-title">
+      <div class="icon icon-red">📋</div>
+      Données supprimées et conservées
+    </div>
+    <p class="para">Conformément au RGPD et à notre Politique de Confidentialité, voici le détail :</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Type de données</th>
+          <th>Action</th>
+          <th>Délai</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Adresse e-mail et mot de passe</td>
+          <td>🗑️ Supprimé définitivement</td>
+          <td>30 jours</td>
+        </tr>
+        <tr>
+          <td>Scores et classement cloud</td>
+          <td>🗑️ Supprimé définitivement</td>
+          <td>30 jours</td>
+        </tr>
+        <tr>
+          <td>Token de notification push</td>
+          <td>🗑️ Supprimé immédiatement</td>
+          <td>Immédiat</td>
+        </tr>
+        <tr>
+          <td>Progression locale (sur votre téléphone)</td>
+          <td>⚠️ Non supprimée automatiquement — désinstallez l'app</td>
+          <td>À votre initiative</td>
+        </tr>
+        <tr>
+          <td>Données anonymisées statistiques</td>
+          <td>🔒 Conservées (non identifiantes)</td>
+          <td>Indéfini</td>
+        </tr>
+        <tr>
+          <td>Données de facturation</td>
+          <td>🔒 Conservées (obligation légale)</td>
+          <td>10 ans</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="info-box green">
+      ℹ️ Les données anonymisées conservées ne permettent pas de vous identifier personnellement.
+      Elles servent uniquement à améliorer le contenu pédagogique de l'application.
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="card">
+    <div class="card-title">
+      <div class="icon icon-green">❓</div>
+      Une question ?
+    </div>
+    <p class="para">
+      Pour toute question relative à la suppression de votre compte ou à vos données personnelles,
+      contactez notre Délégué à la Protection des Données (DPO) :
+    </p>
+    <p class="para">
+      📧 <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a><br/>
+      Objet : "RGPD — [nature de votre demande]"<br/>
+      Délai de réponse : 1 mois maximum (art. 12 RGPD)
+    </p>
+    <p class="para">
+      Vous pouvez également consulter notre
+      <a href="./privacy-policy.html">Politique de Confidentialité complète</a>.
+    </p>
+  </div>
+
+  <div class="footer">
+    DEC'UP — Fox Formations · France · <a href="./privacy-policy.html">Politique de confidentialité</a>
+  </div>
+
+</div>
+</body>
+</html>
