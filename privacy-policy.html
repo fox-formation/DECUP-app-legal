@@ -25,15 +25,15 @@
     .bullet-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.55; color: #1E293B; }
     .bullet-list li::before { content: "•"; color: #3F8757; font-size: 15px; line-height: 1.4; flex-shrink: 0; width: 14px; }
     .info-box { border-radius: 10px; padding: 13px 14px; border-left: 3px solid; font-size: 13px; line-height: 1.6; }
-    .info-box.blue   { background: #EFF6FF; border-color: #BFDBFE; color: #1E40AF; }
-    .info-box.green  { background: #DCEEDB; border-color: #B8DDB6; color: #1F4E32; }
-    .info-box.warning{ background: #FEF9EC; border-color: #F5D17A; color: #92610A; }
-    .info-box.red    { background: #FEF2F2; border-color: #FECACA; color: #991B1B; }
-    .data-table { width: 100%; border-collapse: collapse; border-radius: 10px; overflow: hidden; border: 1px solid #E5E7EB; font-size: 13px; }
+    .info-box.blue    { background: #EFF6FF; border-color: #BFDBFE; color: #1E40AF; }
+    .info-box.green   { background: #DCEEDB; border-color: #B8DDB6; color: #1F4E32; }
+    .info-box.warning { background: #FEF9EC; border-color: #F5D17A; color: #92610A; }
+    .info-box.red     { background: #FEF2F2; border-color: #FECACA; color: #991B1B; }
+    .data-table { width: 100%; border-collapse: collapse; border: 1px solid #E5E7EB; font-size: 13px; }
     .data-table tr:nth-child(even) { background: #FAFAFA; }
     .data-table tr:nth-child(odd)  { background: #FFFFFF; }
     .data-table td { padding: 10px 14px; border-bottom: 1px solid #E5E7EB; vertical-align: top; line-height: 1.5; }
-    .data-table td:first-child { font-weight: 600; color: #0F172A; width: 40%; }
+    .data-table td:first-child { font-weight: 600; color: #0F172A; width: 38%; }
     .entity-card { background: #DCEEDB; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 4px; }
     .entity-name { font-size: 15px; font-weight: 800; color: #1F4E32; }
     .entity-detail { font-size: 13px; color: #1E293B; }
@@ -42,6 +42,8 @@
     .contact-org { font-size: 14px; font-weight: 600; color: #1E293B; }
     .contact-email { font-size: 14px; font-weight: 700; color: #3F8757; margin: 4px 0; }
     .contact-note { font-size: 12px; line-height: 1.7; color: #6B7280; margin-top: 6px; }
+    .change-log { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; font-size: 12px; color: #64748B; line-height: 1.8; }
+    .change-log strong { color: #0F172A; }
   </style>
 </head>
 <body>
@@ -50,7 +52,13 @@
   <div class="header">
     <div class="header-label">DEC'UP — Fox Formations</div>
     <div class="header-title">Politique de Confidentialité</div>
-    <span class="date-badge">Dernière mise à jour : 1er avril 2025</span>
+    <span class="date-badge">Dernière mise à jour : 6 avril 2026</span>
+  </div>
+
+  <div class="change-log">
+    <strong>Historique des révisions :</strong><br/>
+    • <strong>6 avril 2026</strong> — Mise à jour suite à l'analyse des DPA officiels Supabase et Expo : correction de la localisation juridique de Supabase (Singapour), ajout du mécanisme DPF pour Expo, mention anticipée des notifications push (fonctionnalité future avec consentement), précision du délai de notification en cas de violation (72h), mention des sous-traitants de Supabase.<br/>
+    • <strong>1er avril 2025</strong> — Version initiale.
   </div>
 
   <div class="card card-accent-left">
@@ -71,7 +79,7 @@
         <span class="entity-detail">France</span>
         <span class="entity-detail">Contact DPO : <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a></span>
       </div>
-      <p class="para">Pour toute question relative à la présente Politique de Confidentialité ou à l'exercice de vos droits, vous pouvez nous contacter à l'adresse : <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a></p>
+      <p class="para">Pour toute question relative à la présente Politique de Confidentialité ou à l'exercice de vos droits : <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a></p>
     </div>
   </div>
 
@@ -87,11 +95,12 @@
         <li>Date d'inscription</li>
       </ul>
       <div class="info-box blue">Nous ne collectons pas votre numéro de téléphone, adresse postale, date de naissance ni aucune autre donnée d'identité civile au-delà de votre nom et prénom.</div>
+
       <div class="sub-title">2.2 Données de progression pédagogique (stockées localement)</div>
-      <p class="para">Ces données sont générées par votre utilisation de l'application et stockées prioritairement sur votre appareil via AsyncStorage (stockage local mobile) :</p>
+      <p class="para">Ces données sont stockées prioritairement sur votre appareil :</p>
       <ul class="bullet-list">
         <li>Score et résultats de chaque quiz réalisé</li>
-        <li>Questions vues, questions correctes et incorrectes par module/chapitre</li>
+        <li>Questions vues, correctes et incorrectes par module/chapitre</li>
         <li>Taux de maîtrise par module et sous-chapitre</li>
         <li>Points d'expérience (XP) cumulés et niveau atteint</li>
         <li>Série de jours consécutifs d'utilisation (streak)</li>
@@ -100,14 +109,16 @@
         <li>Planning de stage personnalisé</li>
         <li>Missions en cours et accomplies</li>
       </ul>
+
       <div class="sub-title">2.3 Données synchronisées sur nos serveurs (optionnel)</div>
-      <p class="para">Si vous êtes connecté à votre compte et que la synchronisation est active, les données suivantes peuvent être transmises à nos serveurs Supabase :</p>
+      <p class="para">Si vous êtes connecté et que la synchronisation est active :</p>
       <ul class="bullet-list">
         <li>Identifiant utilisateur (UUID anonymisé)</li>
         <li>Scores globaux pour le classement entre utilisateurs</li>
         <li>Données de session d'authentification (token sécurisé)</li>
       </ul>
       <div class="info-box warning">⚠️ La synchronisation cloud est optionnelle. Si vous utilisez l'application hors connexion ou sans compte créé, aucune donnée ne quitte votre appareil.</div>
+
       <div class="sub-title">2.4 Données techniques collectées automatiquement</div>
       <ul class="bullet-list">
         <li>Version de l'application installée</li>
@@ -116,14 +127,19 @@
         <li>Langue du système</li>
         <li>Horodatage des sessions d'utilisation</li>
       </ul>
-      <p class="para">Nous ne collectons pas votre adresse IP de manière permanente, ni vos données de localisation géographique précise.</p>
+
+      <div class="sub-title">2.5 Notifications push — fonctionnalité future</div>
+      <p class="para">L'application DEC'UP ne propose pas encore de notifications push dans sa version actuelle. Cette fonctionnalité est prévue dans une version ultérieure afin de vous rappeler vos sessions de révision et de maintenir votre régularité de travail.</p>
+      <div class="info-box blue">
+        Lorsque les notifications push seront disponibles, votre <strong>consentement explicite</strong> sera demandé avant toute activation. Si vous acceptez, un <strong>token de notification anonyme</strong> sera généré par votre appareil et transmis à notre prestataire Expo pour acheminer les notifications. Ce token n'est pas lié à votre identité civile. Vous pourrez retirer votre consentement à tout moment dans les paramètres de votre téléphone ou dans l'application, sans que cela n'affecte votre accès au service.
+      </div>
     </div>
   </div>
 
   <div class="card">
     <div class="section-header"><div class="num-badge">3</div><div class="section-title">Finalités du traitement et bases légales RGPD</div></div>
     <div class="section-body">
-      <p class="para">Le RGPD impose que chaque traitement de données personnelles repose sur une base légale identifiée. Voici le détail de nos traitements :</p>
+      <p class="para">Le RGPD impose que chaque traitement de données personnelles repose sur une base légale identifiée :</p>
       <table class="data-table"><tbody>
         <tr><td>Création et gestion de votre compte</td><td>Exécution du contrat (art. 6.1.b RGPD)</td></tr>
         <tr><td>Sauvegarde locale de votre progression</td><td>Exécution du contrat (art. 6.1.b RGPD)</td></tr>
@@ -132,39 +148,42 @@
         <tr><td>Amélioration du contenu pédagogique</td><td>Intérêt légitime (art. 6.1.f RGPD)</td></tr>
         <tr><td>Données anonymisées à des fins statistiques</td><td>Intérêt légitime (art. 6.1.f RGPD)</td></tr>
         <tr><td>Gestion des abonnements et paiements</td><td>Obligation légale + contrat (art. 6.1.b/c RGPD)</td></tr>
+        <tr><td>Notifications push (version future)</td><td>Consentement explicite (art. 6.1.a RGPD)</td></tr>
       </tbody></table>
-      <div class="info-box blue">Nous ne traitons jamais vos données personnelles à des fins de publicité comportementale, de profilage commercial, ni de revente à des tiers. DEC'UP ne contient aucune publicité.</div>
+      <div class="info-box blue">Nous ne traitons jamais vos données à des fins de publicité comportementale, de profilage commercial, ni de revente à des tiers. DEC'UP ne contient aucune publicité.</div>
     </div>
   </div>
 
   <div class="card">
     <div class="section-header"><div class="num-badge">4</div><div class="section-title">Sous-traitants et partenaires tiers</div></div>
     <div class="section-body">
-      <p class="para">Fox Formations fait appel aux sous-traitants suivants pour faire fonctionner l'application :</p>
+      <p class="para">Fox Formations fait appel aux sous-traitants suivants. Chacun est lié contractuellement par des obligations de confidentialité et de sécurité :</p>
       <table class="data-table"><tbody>
-        <tr><td>Supabase (États-Unis)</td><td>Authentification et synchronisation cloud</td></tr>
-        <tr><td>Expo / React Native (États-Unis)</td><td>Plateforme de développement et distribution</td></tr>
+        <tr><td>Supabase, Inc (Singapour — hébergement AWS / Google Cloud, États-Unis)</td><td>Authentification et synchronisation cloud</td></tr>
+        <tr><td>Expo / React Native (États-Unis)</td><td>Plateforme de développement, distribution et notifications push (version future)</td></tr>
         <tr><td>Google Play / Apple App Store</td><td>Distribution de l'app et gestion des paiements in-app</td></tr>
         <tr><td>Anthropic (États-Unis)</td><td>Génération et audit du contenu pédagogique (hors production)</td></tr>
       </tbody></table>
-      <div class="info-box warning">⚠️ Supabase et Anthropic sont des services hébergés aux États-Unis. Ce transfert hors Union Européenne est encadré par les Clauses Contractuelles Types (CCT) adoptées par la Commission Européenne, conformément à l'art. 46 du RGPD.</div>
-      <p class="para">Google Play et Apple App Store traitent vos données de paiement de manière totalement indépendante. Fox Formations n'a jamais accès à vos données bancaires ou de carte de paiement.</p>
-      <p class="para">Anthropic est utilisé uniquement comme outil de création du contenu pédagogique (génération et vérification des QCM) par les équipes Fox Formations, en dehors de toute interaction directe avec les données des utilisateurs finaux.</p>
+      <div class="info-box warning">⚠️ Ces prestataires sont établis hors de l'Union Européenne. Les transferts de données sont encadrés par les Clauses Contractuelles Types (CCT) et/ou le Data Privacy Framework (DPF), conformément aux articles 44 à 46 du RGPD. Voir section 10 pour le détail par prestataire.</div>
+      <p class="para"><strong>Concernant Supabase :</strong> l'entité juridique contractante est Supabase, Inc, dont le siège social est à Singapour. Supabase fait lui-même appel à des sous-traitants (Amazon Web Services, Google Cloud, Cloudflare, etc.) dont la liste complète est disponible sur <a href="https://supabase.com/legal/dpa" target="_blank" rel="noopener">supabase.com/legal/dpa</a>. Ces sous-traitants sont soumis à des obligations de protection équivalentes à celles imposées à Supabase.</p>
+      <p class="para">Google Play et Apple App Store traitent vos données de paiement de manière totalement indépendante. Fox Formations n'a jamais accès à vos données bancaires.</p>
+      <p class="para">Anthropic est utilisé uniquement pour la création du contenu pédagogique par les équipes Fox Formations, sans accès aux données des utilisateurs finaux.</p>
     </div>
   </div>
 
   <div class="card">
     <div class="section-header"><div class="num-badge">5</div><div class="section-title">Durée de conservation des données</div></div>
     <div class="section-body">
-      <p class="para">Nous ne conservons vos données que le temps strictement nécessaire aux finalités pour lesquelles elles ont été collectées :</p>
       <table class="data-table"><tbody>
         <tr><td>Données de compte (e-mail)</td><td>Durée de vie du compte + 3 ans après suppression</td></tr>
         <tr><td>Données de progression (local)</td><td>Conservées jusqu'à désinstallation de l'app</td></tr>
         <tr><td>Données de classement (cloud)</td><td>Durée de l'abonnement actif + 1 an</td></tr>
         <tr><td>Logs de connexion</td><td>30 jours maximum</td></tr>
         <tr><td>Données de facturation</td><td>10 ans (obligation comptable légale)</td></tr>
-        <tr><td>Données anonymisées</td><td>Durée indéterminée (ne permettent pas d'identification)</td></tr>
+        <tr><td>Token de notification push (future)</td><td>Durée du consentement — supprimé immédiatement sur révocation</td></tr>
+        <tr><td>Données anonymisées</td><td>Durée indéterminée (non identifiantes)</td></tr>
       </tbody></table>
+      <p class="para">À l'expiration de ces délais, vos données sont supprimées ou rendues irréversiblement anonymes.</p>
     </div>
   </div>
 
@@ -179,13 +198,13 @@
         <li>Droit à la limitation du traitement : suspendre l'utilisation de vos données</li>
         <li>Droit à la portabilité : recevoir vos données dans un format structuré et lisible</li>
         <li>Droit d'opposition : vous opposer à un traitement basé sur l'intérêt légitime</li>
-        <li>Droit de retrait du consentement : à tout moment, pour les traitements basés sur le consentement</li>
+        <li>Droit de retrait du consentement : à tout moment, y compris pour les notifications push</li>
         <li>Droit de ne pas faire l'objet d'une décision automatisée</li>
       </ul>
-      <div class="info-box green">Pour exercer l'un de ces droits, contactez-nous à : <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a><br/>Délai de réponse : 1 mois maximum (art. 12 RGPD).</div>
-      <p class="para">Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la CNIL :</p>
+      <div class="info-box green">Pour exercer l'un de ces droits : <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a><br/>Délai de réponse : 1 mois maximum (art. 12 RGPD), prorogeable de 2 mois pour les demandes complexes.</div>
+      <p class="para">En cas de réclamation, vous pouvez saisir la CNIL :</p>
       <ul class="bullet-list">
-        <li>Site web : <a href="https://www.cnil.fr" target="_blank">www.cnil.fr</a></li>
+        <li>Site web : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a></li>
         <li>Adresse : 3 Place de Fontenoy — TSA 80715 — 75334 Paris Cedex 07</li>
         <li>Téléphone : +33 1 53 73 22 22</li>
       </ul>
@@ -195,15 +214,16 @@
   <div class="card">
     <div class="section-header"><div class="num-badge">7</div><div class="section-title">Sécurité des données</div></div>
     <div class="section-body">
+      <p class="para">Fox Formations met en œuvre des mesures techniques et organisationnelles appropriées :</p>
       <ul class="bullet-list">
         <li>Chiffrement des mots de passe (bcrypt — jamais stockés en clair)</li>
         <li>Communications chiffrées via HTTPS/TLS entre l'app et nos serveurs</li>
         <li>Authentification sécurisée via tokens JWT (Supabase Auth)</li>
-        <li>Stockage local chiffré sur l'appareil (AsyncStorage sécurisé)</li>
+        <li>Chiffrement des données au repos côté Supabase (AES-256)</li>
         <li>Accès aux données de production limité aux seuls administrateurs autorisés</li>
         <li>Revue régulière des accès et des permissions</li>
       </ul>
-      <div class="info-box warning">⚠️ Aucun système de sécurité n'est infaillible. En cas de violation de données susceptible d'engendrer un risque élevé pour vos droits et libertés, nous vous en informerons dans les meilleurs délais, conformément à l'art. 34 du RGPD.</div>
+      <div class="info-box warning">⚠️ En cas de violation de données susceptible d'engendrer un risque élevé pour vos droits, nous vous en informerons <strong>dans un délai de 72 heures</strong> après en avoir pris connaissance (art. 33 et 34 du RGPD). Notre prestataire Supabase s'engage contractuellement à nous notifier tout incident dans un délai de 48 heures.</div>
     </div>
   </div>
 
@@ -211,7 +231,7 @@
     <div class="section-header"><div class="num-badge">8</div><div class="section-title">Utilisateurs mineurs</div></div>
     <div class="section-body">
       <p class="para">L'application DEC'UP est destinée exclusivement à un public adulte et professionnel.</p>
-      <div class="info-box red">🚫 DEC'UP n'est pas destinée aux mineurs. Nous ne collectons sciemment aucune donnée personnelle auprès de personnes de moins de 18 ans. Si nous apprenons qu'un mineur a créé un compte, nous procéderons immédiatement à la suppression de ce compte et des données associées. Contact : <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a></div>
+      <div class="info-box red">🚫 DEC'UP n'est pas destinée aux mineurs. Nous ne collectons sciemment aucune donnée personnelle auprès de personnes de moins de 18 ans. Si nous apprenons qu'un mineur a créé un compte, nous procéderons immédiatement à sa suppression. Contact : <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a></div>
     </div>
   </div>
 
@@ -220,36 +240,38 @@
     <div class="section-body">
       <p class="para">L'application mobile DEC'UP n'utilise pas de cookies au sens traditionnel du terme. Sur mobile, nous utilisons des mécanismes équivalents :</p>
       <ul class="bullet-list">
-        <li>AsyncStorage : stockage local des préférences et de la progression (sur votre appareil uniquement)</li>
-        <li>Identifiant d'installation : identifiant technique anonyme généré à l'installation</li>
+        <li>Stockage local : conservation des préférences et de la progression sur votre appareil uniquement</li>
+        <li>Identifiant d'installation : identifiant technique anonyme, non lié à votre identité</li>
       </ul>
       <p class="para">Dans sa version actuelle, DEC'UP ne collecte pas de données analytiques comportementales via des services tiers (pas de Google Analytics, Firebase Analytics, ni Mixpanel).</p>
-      <div class="info-box blue">Si nous intégrons des outils d'analyse tiers dans une version future, cette Politique de Confidentialité sera mise à jour et vous en serez informés avant l'entrée en vigueur du changement.</div>
+      <div class="info-box blue">Si nous intégrons des outils d'analyse tiers dans une version future, cette Politique sera mise à jour et vous en serez informés avant l'entrée en vigueur du changement.</div>
     </div>
   </div>
 
   <div class="card">
     <div class="section-header"><div class="num-badge">10</div><div class="section-title">Transferts de données hors Union Européenne</div></div>
     <div class="section-body">
-      <p class="para">Certains de nos sous-traitants sont établis aux États-Unis. Les transferts sont encadrés par les garanties suivantes :</p>
+      <p class="para">Certains de nos sous-traitants sont établis hors de l'Union Européenne. Les garanties applicables, vérifiées sur la base de leurs accords officiels de traitement de données (DPA), sont les suivantes :</p>
       <table class="data-table"><tbody>
-        <tr><td>Supabase</td><td>Clauses Contractuelles Types (CCT) — Commission UE</td></tr>
-        <tr><td>Expo / React Native</td><td>Clauses Contractuelles Types (CCT) — Commission UE</td></tr>
-        <tr><td>Google Play / Apple</td><td>Décisions d'adéquation + Privacy Shield successeur (DPF)</td></tr>
+        <tr><td>Supabase, Inc (Singapour / États-Unis)</td><td>Clauses Contractuelles Types (CCT) — Commission UE 2021/914, droit applicable irlandais</td></tr>
+        <tr><td>Expo / React Native (États-Unis)</td><td>Data Privacy Framework UE-États-Unis (DPF) + Clauses Contractuelles Types (CCT)</td></tr>
+        <tr><td>Google Play / Apple App Store</td><td>Data Privacy Framework (DPF) + Décisions d'adéquation Commission UE</td></tr>
+        <tr><td>Anthropic (États-Unis)</td><td>Clauses Contractuelles Types (CCT) — Commission UE</td></tr>
       </tbody></table>
-      <p class="para">Ces transferts sont conformes aux articles 44 à 49 du RGPD. Contact : <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a></p>
+      <div class="info-box blue">Le <strong>Data Privacy Framework (DPF)</strong> est un accord d'adéquation reconnu par la Commission Européenne depuis juillet 2023, garantissant un niveau de protection équivalent au RGPD pour les entreprises américaines certifiées. Ces transferts sont conformes aux articles 44 à 49 du RGPD. Pour obtenir une copie des garanties : <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a></div>
     </div>
   </div>
 
   <div class="card">
     <div class="section-header"><div class="num-badge">11</div><div class="section-title">Modifications de la Politique de Confidentialité</div></div>
     <div class="section-body">
-      <p class="para">Fox Formations se réserve le droit de modifier la présente Politique de Confidentialité à tout moment. En cas de modification substantielle, vous serez informés :</p>
+      <p class="para">Fox Formations se réserve le droit de modifier la présente Politique à tout moment. En cas de modification substantielle, vous serez informés :</p>
       <ul class="bullet-list">
         <li>Par notification dans l'application lors de votre prochaine connexion</li>
         <li>Par e-mail si vous disposez d'un compte enregistré</li>
-        <li>Par mise à jour de la date en haut de ce document</li>
+        <li>Par mise à jour de la date et du journal des révisions en haut de ce document</li>
       </ul>
+      <p class="para">La poursuite de l'utilisation après notification vaut acceptation. Si vous refusez les modifications, vous pouvez supprimer votre compte à tout moment.</p>
     </div>
   </div>
 
@@ -261,15 +283,23 @@
         <li>Via l'application : Menu → Mon compte → Supprimer mon compte</li>
         <li>Par e-mail : <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a> — objet : "Suppression de compte"</li>
       </ul>
-      <p class="para">La suppression est effective dans un délai de 30 jours et entraîne la suppression de vos identifiants, scores cloud et la révocation de votre abonnement actif.</p>
-      <div class="info-box blue">Les données stockées localement sur votre appareil (progression, XP, planning) ne sont pas supprimées automatiquement. Pour les supprimer, désinstallez l'application ou effacez les données de l'app dans les paramètres de votre téléphone.</div>
+      <p class="para">La suppression est effective dans un délai de 30 jours et entraîne :</p>
+      <ul class="bullet-list">
+        <li>La suppression de votre adresse e-mail et identifiants de nos serveurs</li>
+        <li>La suppression de vos scores du classement cloud</li>
+        <li>La révocation immédiate de votre token de notification push (si activé)</li>
+        <li>La révocation de votre abonnement actif (sans remboursement prorata sauf cas CGV)</li>
+        <li>La conservation des données anonymisées à des fins statistiques (non identifiantes)</li>
+        <li>La conservation des données de facturation pendant 10 ans (obligation légale)</li>
+      </ul>
+      <div class="info-box blue">Les données stockées localement sur votre appareil (progression, XP, planning) ne sont pas supprimées automatiquement. Pour les effacer, désinstallez l'application ou effacez ses données dans les paramètres de votre téléphone.</div>
     </div>
   </div>
 
   <div class="card">
     <div class="section-header"><div class="num-badge">13</div><div class="section-title">Liens vers des sites et services tiers</div></div>
     <div class="section-body">
-      <p class="para">L'application DEC'UP peut contenir des liens vers des ressources externes : sites de l'Ordre des Experts-Comptables, de la CNCC, de Légifrance, du Bofip, ou vers les stores de téléchargement. Ces sites sont soumis à leurs propres politiques de confidentialité, indépendantes de la présente.</p>
+      <p class="para">L'application DEC'UP peut contenir des liens vers des ressources externes : sites de l'Ordre des Experts-Comptables, de la CNCC, de Légifrance, du Bofip, ou vers les stores. Ces sites sont soumis à leurs propres politiques de confidentialité, indépendantes de la présente.</p>
       <p class="para">Fox Formations décline toute responsabilité quant aux pratiques de collecte de données de ces sites tiers.</p>
     </div>
   </div>
@@ -279,9 +309,9 @@
     <div class="contact-org">Fox Formations</div>
     <div class="contact-email"><a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a></div>
     <div class="contact-note">
-      Objet : "RGPD — [nature de votre demande]"<br/>
+      Objet de votre e-mail : "RGPD — [nature de votre demande]"<br/>
       Délai de réponse : 1 mois maximum (art. 12 RGPD)<br/>
-      Autorité de contrôle : CNIL — <a href="https://www.cnil.fr" target="_blank">www.cnil.fr</a>
+      Autorité de contrôle : CNIL — <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>
     </div>
   </div>
 
