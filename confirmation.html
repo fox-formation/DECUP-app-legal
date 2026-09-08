@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>DEC'UP — Confirmation de votre compte</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --text: #1b2437;
+      --muted: #5b6577;
+      --brand: #1f3a93;
+      --ok: #1f9d55;
+      --ok-bg: #e6f6ec;
+      --warn: #c2410c;
+      --warn-bg: #fff1e8;
+      --border: #e3e7ef;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      line-height: 1.5;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(27, 36, 55, 0.08);
+      max-width: 460px;
+      width: 100%;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--brand);
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .icon {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .icon svg { width: 36px; height: 36px; }
+    #ok .icon { background: var(--ok-bg); color: var(--ok); }
+    #error .icon { background: var(--warn-bg); color: var(--warn); }
+    h1 { font-size: 22px; margin: 0 0 10px; }
+    p { margin: 0 0 14px; color: var(--muted); font-size: 16px; }
+    p.lead { color: var(--text); font-size: 17px; }
+    .btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      background: var(--brand);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .btn:active { opacity: 0.85; }
+    .hint { font-size: 14px; margin-top: 18px; }
+    .footer {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer a { color: var(--brand); }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <div class="brand">DEC'UP</div>
+
+    <!-- Cas normal : le lien a bien été validé par Supabase -->
+    <section id="ok">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h1>Votre compte est validé</h1>
+      <p class="lead">Retournez dans l'application DEC'UP pour continuer : connectez-vous avec votre adresse email et votre mot de passe.</p>
+      <a class="btn" id="openApp" href="qcmdec://" hidden>Ouvrir DEC'UP</a>
+      <p class="hint" id="desktopHint" hidden>Vous pouvez fermer cette page et ouvrir DEC'UP sur votre téléphone.</p>
+    </section>
+
+    <!-- Cas d'erreur : lien expiré ou déjà utilisé -->
+    <section id="error" hidden>
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 16.5v.5"/><circle cx="12" cy="12" r="9"/></svg>
+      </div>
+      <h1 id="errorTitle">Ce lien n'est plus valide</h1>
+      <p class="lead" id="errorText">Le lien de confirmation a expiré ou a déjà été utilisé.</p>
+      <p>Si vous aviez déjà cliqué sur ce lien, votre compte est sans doute déjà validé : ouvrez DEC'UP et essayez de vous connecter. Sinon, recommencez l'inscription avec la même adresse email pour recevoir un nouveau lien.</p>
+      <a class="btn" id="openAppError" href="qcmdec://" hidden>Ouvrir DEC'UP</a>
+    </section>
+
+    <div class="footer">
+      Besoin d'aide ? Écrivez-nous à <a href="mailto:admin@fox-formation.com">admin@fox-formation.com</a>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      // Lit les paramètres présents dans le fragment (#...) ou la query (?...)
+      function parse(str) {
+        var out = {};
+        str.replace(/^[#?]/, '').split('&').forEach(function (part) {
+          if (!part) return;
+          var kv = part.split('=');
+          try {
+            out[decodeURIComponent(kv[0])] = decodeURIComponent((kv[1] || '').replace(/\+/g, ' '));
+          } catch (e) { /* paramètre illisible : ignoré */ }
+        });
+        return out;
+      }
+
+      var hash = parse(window.location.hash);
+      var query = parse(window.location.search);
+      var error = hash.error || query.error;
+      var errorCode = hash.error_code || query.error_code;
+
+      var okSection = document.getElementById('ok');
+      var errorSection = document.getElementById('error');
+
+      if (error) {
+        okSection.hidden = true;
+        errorSection.hidden = false;
+        if (errorCode && errorCode !== 'otp_expired') {
+          document.getElementById('errorText').textContent =
+            "La confirmation n'a pas pu être effectuée (" + errorCode + ").";
+        }
+      }
+
+      // Nettoie l'adresse : Supabase peut ajouter des jetons de session dans l'URL,
+      // cette page n'en a pas besoin et ils ne doivent pas rester dans l'historique.
+      try { window.history.replaceState(null, '', window.location.pathname); } catch (e) {}
+
+      // Le bouton « Ouvrir DEC'UP » n'a de sens que sur un téléphone.
+      var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      document.getElementById('openApp').hidden = !isMobile;
+      document.getElementById('openAppError').hidden = !isMobile;
+      document.getElementById('desktopHint').hidden = isMobile;
+    })();
+  </script>
+</body>
+</html>
